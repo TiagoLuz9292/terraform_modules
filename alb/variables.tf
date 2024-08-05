@@ -16,6 +16,7 @@ variable "vpc_id" {
 variable "certificate_arn" {
   description = "ARN of the SSL certificate."
   type        = string
+  default     = ""
 }
 
 variable "tags" {
