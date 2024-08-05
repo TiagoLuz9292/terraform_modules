@@ -9,9 +9,9 @@ resource "aws_cloudwatch_metric_alarm" "high_cpu" {
   threshold           = var.high_cpu_threshold
   alarm_description   = "This metric monitors the average CPU usage for the ASG."
   dimensions = {
-    AutoScalingGroupName = aws_autoscaling_group.asg.name
+    AutoScalingGroupName = var.asg_name
   }
-  alarm_actions = [aws_autoscaling_policy.scale_out_policy.arn]
+  alarm_actions = [var.scale_out_policy_arn]
 }
 
 resource "aws_cloudwatch_metric_alarm" "low_cpu" {
@@ -25,7 +25,7 @@ resource "aws_cloudwatch_metric_alarm" "low_cpu" {
   threshold           = var.low_cpu_threshold
   alarm_description   = "This metric monitors the average CPU usage for the ASG."
   dimensions = {
-    AutoScalingGroupName = aws_autoscaling_group.asg.name
+    AutoScalingGroupName = var.asg_name
   }
-  alarm_actions = [aws_autoscaling_policy.scale_in_policy.arn]
+  alarm_actions = [var.scale_in_policy_arn]
 }
