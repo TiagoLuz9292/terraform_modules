@@ -58,8 +58,3 @@ variable "target_group_arns" {
   type        = list(string)
 }
 
-variable "worker_instance_name" {
-  description = "The name of the worker instance"
-  type        = string
-}
-
