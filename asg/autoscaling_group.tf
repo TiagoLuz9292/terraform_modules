@@ -1,7 +1,7 @@
 resource "aws_autoscaling_group" "asg" {
   depends_on = [null_resource.provision_master]
 
-  name                 = "k8s_asg"
+  name                 = "asg"
   desired_capacity     = var.desired_capacity
   max_size             = var.max_size
   min_size             = var.min_size
@@ -10,7 +10,7 @@ resource "aws_autoscaling_group" "asg" {
 
   tag {
     key                 = "Name"
-    value               = var.worker_instance_name
+    value               = "test"
     propagate_at_launch = true
   }
 
