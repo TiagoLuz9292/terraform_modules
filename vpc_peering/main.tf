@@ -6,6 +6,16 @@ terraform {
   }
 }
 
+provider "aws" {
+  alias  = "subaccount"
+  region = var.aws_region
+}
+
+provider "aws" {
+  alias  = "mainaccount"
+  region = var.aws_region
+}
+
 resource "aws_vpc_peering_connection" "peer" {
   provider      = aws.subaccount
   vpc_id        = var.vpc_id
@@ -21,12 +31,14 @@ resource "aws_vpc_peering_connection" "peer" {
 }
 
 resource "aws_route" "dev_to_admin" {
+  provider                  = aws.subaccount
   route_table_id            = var.route_table_id
   destination_cidr_block    = var.peer_vpc_cidr
   vpc_peering_connection_id = aws_vpc_peering_connection.peer.id
 }
 
 resource "aws_route" "admin_to_dev" {
+  provider                  = aws.mainaccount
   route_table_id            = var.admin_route_table_id
   destination_cidr_block    = var.vpc_cidr
   vpc_peering_connection_id = aws_vpc_peering_connection.peer.id
