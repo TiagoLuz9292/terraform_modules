@@ -58,3 +58,7 @@ variable "target_group_arns" {
   type        = list(string)
 }
 
+variable "aws_region" {
+  description = "AWS region"
+  type        = string
+}

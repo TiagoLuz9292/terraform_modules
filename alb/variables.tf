@@ -29,3 +29,8 @@ variable "s3_bucket_name" {
   type        = string
   default     = ""
 }
+
+variable "aws_region" {
+  description = "AWS region"
+  type        = string
+}

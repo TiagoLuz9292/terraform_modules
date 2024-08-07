@@ -1,3 +1,16 @@
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+    }
+  }
+}
+
+provider "aws" {
+  alias  = "subaccount"
+  region = var.aws_region
+}
+
 resource "aws_autoscaling_group" "asg" {
   depends_on = [null_resource.provision_master]
 

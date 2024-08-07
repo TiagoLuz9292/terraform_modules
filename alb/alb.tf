@@ -1,3 +1,16 @@
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+    }
+  }
+}
+
+provider "aws" {
+  alias  = "subaccount"
+  region = var.aws_region
+}
+
 resource "aws_lb" "alb" {
   name               = "${var.name_prefix}-alb"
   internal           = false
