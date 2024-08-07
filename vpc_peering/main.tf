@@ -1,17 +1,15 @@
-terraform {
-  required_providers {
-    aws = {
-      source = "hashicorp/aws"
-    }
-  }
-}
-
 provider "aws" {
   alias  = "subaccount"
   region = var.aws_region
 }
 
+provider "aws" {
+  alias  = "mainaccount"
+  region = var.aws_region
+}
+
 resource "aws_vpc_peering_connection" "peer" {
+  provider      = aws.subaccount
   vpc_id        = var.vpc_id
   peer_vpc_id   = var.peer_vpc_id
   auto_accept   = true
