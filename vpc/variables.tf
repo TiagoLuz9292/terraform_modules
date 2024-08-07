@@ -65,3 +65,8 @@ variable "environment_tags" {
     Environment = "dev"
   }
 }
+
+variable "aws_region" {
+  description = "AWS region"
+  type        = string
+}
