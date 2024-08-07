@@ -1,11 +1,3 @@
-terraform {
-  required_providers {
-    aws = {
-      source = "hashicorp/aws"
-    }
-  }
-}
-
 provider "aws" {
   alias  = "subaccount"
   region = var.aws_region
