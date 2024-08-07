@@ -23,7 +23,3 @@ output "route_table_id" {
   value       = aws_route_table.routetable.id
 }
 
-output "vpc_cidr" {
-  description = "The CIDR block of the VPC"
-  value       = aws_vpc.cidr_block
-}
