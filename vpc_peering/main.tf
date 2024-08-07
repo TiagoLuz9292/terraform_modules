@@ -1,11 +1,9 @@
-provider "aws" {
-  alias  = "subaccount"
-  region = var.aws_region
-}
-
-provider "aws" {
-  alias  = "mainaccount"
-  region = var.aws_region
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+    }
+  }
 }
 
 resource "aws_vpc_peering_connection" "peer" {
