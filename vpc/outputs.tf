@@ -25,5 +25,5 @@ output "route_table_id" {
 
 output "vpc_cidr" {
   description = "The CIDR block of the VPC"
-  value       = aws_vpc.main.cidr_block
+  value       = aws_vpc.cidr_block
 }
