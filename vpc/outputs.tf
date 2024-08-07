@@ -22,3 +22,7 @@ output "route_table_id" {
   description = "The ID of the route table"
   value       = aws_route_table.routetable.id
 }
+
+output "vpc_cidr" {
+  value       = aws_vpc.main.cidr_block
+}
