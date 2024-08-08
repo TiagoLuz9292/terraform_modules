@@ -37,7 +37,7 @@ variable "aws_region" {
   type        = string
 }
 
-variable "security_group_id" {
-  description = "The security group ID for the instance"
-  type        = string
+variable "security_group_ids" {
+  description = "The security group IDs for the ALB"
+  type        = list(string)
 }
