@@ -22,7 +22,7 @@ resource "aws_autoscaling_group" "asg" {
 
   tag {
     key                 = "Name"
-    value               = "test"
+    value               = "UI-dev"
     propagate_at_launch = true
   }
 
