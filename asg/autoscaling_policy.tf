@@ -3,7 +3,7 @@ resource "aws_autoscaling_policy" "scale_out_policy" {
   scaling_adjustment     = 1
   adjustment_type        = "ChangeInCapacity"
   cooldown               = 60
-  autoscaling_group_name = aws_autoscaling_group.k8s_asg.name
+  autoscaling_group_name = aws_autoscaling_group.asg.name
 }
 
 resource "aws_autoscaling_policy" "scale_in_policy" {
@@ -11,5 +11,5 @@ resource "aws_autoscaling_policy" "scale_in_policy" {
   scaling_adjustment     = -1
   adjustment_type        = "ChangeInCapacity"
   cooldown               = 60
-  autoscaling_group_name = aws_autoscaling_group.k8s_asg.name
+  autoscaling_group_name = aws_autoscaling_group.asg.name
 }

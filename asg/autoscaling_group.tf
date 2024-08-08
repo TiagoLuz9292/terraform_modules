@@ -12,7 +12,6 @@ provider "aws" {
 }
 
 resource "aws_autoscaling_group" "asg" {
-  depends_on = [null_resource.provision_master]
 
   name                 = "asg"
   desired_capacity     = var.desired_capacity
