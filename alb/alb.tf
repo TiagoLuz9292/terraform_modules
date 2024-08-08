@@ -20,10 +20,7 @@ resource "aws_lb" "alb" {
 
   enable_deletion_protection = false
 
-  tag {
-    key                 = "Environment"
-    value               = "dev"
-  }
+  tags = var.tags
 }
 
 resource "aws_lb_listener" "http" {

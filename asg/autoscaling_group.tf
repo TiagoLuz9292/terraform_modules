@@ -20,11 +20,7 @@ resource "aws_autoscaling_group" "asg" {
   vpc_zone_identifier  = var.subnet_ids
   target_group_arns    = var.target_group_arns
 
-  tag {
-    key                 = "Name"
-    value               = "UI-dev"
-    propagate_at_launch = true
-  }
+  tags = var.tags
 
   mixed_instances_policy {
     instances_distribution {
