@@ -36,7 +36,7 @@ resource "aws_autoscaling_group" "asg" {
 
     launch_template {
       launch_template_specification {
-        launch_template_id = aws_launch_template.worker.id
+        launch_template_id = aws_launch_template.instance.id
         version            = "$Latest"
       }
 
