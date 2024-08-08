@@ -12,17 +12,17 @@ provider "aws" {
 }
 
 resource "aws_lb" "alb" {
-  name               = "${var.name_prefix}-alb"
+  name               = "alb"
   internal           = false
   load_balancer_type = "application"
-  security_groups    = [aws_security_group.alb_sg.id]
+  security_groups    = var.security_group_id
   subnets            = var.subnet_ids
 
   enable_deletion_protection = false
 
-  tags = merge({
-    Name = "${var.name_prefix}-alb"
-  }, var.tags)
+  tags = merge{
+    Name = "alb"
+  }
 }
 
 resource "aws_lb_listener" "http" {

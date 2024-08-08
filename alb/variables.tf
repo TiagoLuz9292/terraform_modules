@@ -8,10 +8,6 @@ variable "subnet_ids" {
   type        = list(string)
 }
 
-variable "vpc_id" {
-  description = "VPC ID for the ALB."
-  type        = string
-}
 
 variable "certificate_arn" {
   description = "ARN of the SSL certificate."
@@ -24,6 +20,12 @@ variable "tags" {
   type        = map(string)
 }
 
+variable "vpc_id" {
+  description = "vpc_id"
+  type        = string
+}
+
+
 variable "s3_bucket_name" {
   description = "S3 bucket name for ALB access logs."
   type        = string
@@ -32,5 +34,10 @@ variable "s3_bucket_name" {
 
 variable "aws_region" {
   description = "AWS region"
+  type        = string
+}
+
+variable "security_group_id" {
+  description = "The security group ID for the instance"
   type        = string
 }
