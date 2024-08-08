@@ -20,7 +20,7 @@ resource "aws_lb" "alb" {
 
   enable_deletion_protection = false
 
-  tags = merge{
+  tags {
     Name = "alb"
   }
 }
