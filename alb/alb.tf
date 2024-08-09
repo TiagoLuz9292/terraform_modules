@@ -20,14 +20,7 @@ resource "aws_lb" "alb" {
 
   enable_deletion_protection = false
 
-  dynamic "tag" {
-    for_each = var.tags
-    content {
-      key                 = tag.key
-      value               = tag.value
-      propagate_at_launch = true
-    }
-  }
+  tags = var.tags
 }
 
 resource "aws_lb_listener" "http" {
