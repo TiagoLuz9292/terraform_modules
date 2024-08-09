@@ -40,7 +40,7 @@ resource "aws_autoscaling_group" "asg_blue" {
 
     launch_template {
       launch_template_specification {
-        launch_template_id = aws_launch_template.instance.id
+        launch_template_id = aws_launch_template.blue_launch_template.id
         version            = "$Latest"
       }
 
@@ -80,7 +80,7 @@ resource "aws_autoscaling_group" "asg_green" {
 
     launch_template {
       launch_template_specification {
-        launch_template_id = aws_launch_template.instance.id
+        launch_template_id = aws_launch_template.green_launch_template.id
         version            = "$Latest"
       }
 
