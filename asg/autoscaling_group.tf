@@ -14,7 +14,7 @@ provider "aws" {
 resource "aws_autoscaling_group" "asg_blue" {
 
   count                = var.deployment_strategy == "blue-green" ? 1 : 0
-  name                 = var.asg_name
+  name                 = blue-${var.asg_name}
   desired_capacity     = var.desired_capacity
   max_size             = var.max_size
   min_size             = var.min_size
@@ -54,7 +54,7 @@ resource "aws_autoscaling_group" "asg_blue" {
 resource "aws_autoscaling_group" "asg_green" {
 
   count                = var.deployment_strategy == "single" ? 1 : 1
-  name                 = var.asg_name
+  name                 = green-${var.asg_name}
   desired_capacity     = var.desired_capacity
   max_size             = var.max_size
   min_size             = var.min_size
