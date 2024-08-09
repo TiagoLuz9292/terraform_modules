@@ -72,3 +72,9 @@ variable "asg_name" {
   description = "asg name"
   type        = string
 }
+
+variable "deployment_strategy" {
+  description = "Determines the deployment strategy: single (one ASG) or blue-green (two ASGs)"
+  type        = string
+  default     = "single"
+}
