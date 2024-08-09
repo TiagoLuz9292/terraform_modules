@@ -12,7 +12,7 @@ provider "aws" {
 }
 
 resource "aws_lb" "alb" {
-  name               = "alb"
+  name               = var.alb_name
   internal           = false
   load_balancer_type = "application"
   security_groups    = var.security_group_ids

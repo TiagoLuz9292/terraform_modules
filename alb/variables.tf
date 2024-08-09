@@ -25,6 +25,10 @@ variable "vpc_id" {
   type        = string
 }
 
+variable "alb_name" {
+  description = "alb name"
+  type        = string
+}
 
 variable "s3_bucket_name" {
   description = "S3 bucket name for ALB access logs."

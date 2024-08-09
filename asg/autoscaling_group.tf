@@ -13,7 +13,7 @@ provider "aws" {
 
 resource "aws_autoscaling_group" "asg" {
 
-  name                 = "asg"
+  name                 = var.asg_name
   desired_capacity     = var.desired_capacity
   max_size             = var.max_size
   min_size             = var.min_size
