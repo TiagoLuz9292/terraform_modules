@@ -78,3 +78,18 @@ variable "deployment_strategy" {
   type        = string
   default     = "single"
 }
+
+variable "environment" {
+  description = "The environment to deploy: dev, stg, or prod"
+  type        = string
+}
+
+variable "active_asg" {
+  description = "The active ASG (currently serving traffic)"
+  default     = "blue"
+}
+
+variable "passive_asg" {
+  description = "The passive ASG (not serving traffic)"
+  default     = "green"
+}
