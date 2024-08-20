@@ -1,5 +1,8 @@
+
+
+
 resource "aws_launch_template" "blue_launch_template" {
-  count = var.deployment_strategy == "blue-green" ? 1 : 0
+  count = var.deployment_strategy == "blue-green" || (var.deployment_strategy == "single" && var.active_asg == "blue") ? 1 : 0
   name_prefix      = "${var.name_prefix}-green"
   image_id         = var.instance_ami
   instance_type    = var.instance_type
@@ -21,17 +24,11 @@ resource "aws_launch_template" "blue_launch_template" {
     }
   }
 
-  user_data = base64encode(<<-EOF
-    #!/bin/bash
-
-    echo "Starting worker setup script"
-
-  EOF
-  )
+  user_data = base64encode(file("/home/tluz/project/online_marketplace_infrastructure/terraform_modules/asg/userdata_${var.environment}.sh"))
 }
 
 resource "aws_launch_template" "green_launch_template" {
-  count = 1
+  count = var.deployment_strategy == "blue-green" || (var.deployment_strategy == "single" && var.active_asg == "green") ? 1 : 0
   name_prefix      = "${var.name_prefix}-blue"
   image_id         = var.instance_ami
   instance_type    = var.instance_type
@@ -53,11 +50,5 @@ resource "aws_launch_template" "green_launch_template" {
     }
   }
 
-  user_data = base64encode(<<-EOF
-    #!/bin/bash
-
-    echo "Starting worker setup script"
-
-  EOF
-  )
+  user_data = base64encode(file("/home/tluz/project/online_marketplace_infrastructure/terraform_modules/asg/userdata_${var.environment}.sh"))
 }
